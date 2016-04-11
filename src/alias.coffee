@@ -1,0 +1,2 @@
+class @Alias
+  constructor:(@command)->

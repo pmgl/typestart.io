@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>typestart.io</title>
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,900' rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/0.9.3/css/jquery.terminal.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/0.9.3/js/jquery.terminal-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+    <script src="http://coffeescript.org/extras/coffee-script.js"></script>
+
+    <script src="src/command.js"></script>
+    <script src="src/alias.js"></script>
+    <script src="src/drive.js"></script>
+    <script src="src/editor.js"></script>
+
+    <link href='src/default.css' rel='stylesheet' type='text/css' />
+
+    <style>
+    </style>
+
+</head>
+<body>
+    <div class="wrapper" id="wrapper">
+        <div class="mainpanel">
+            <div class="container terminalcontainer">
+                <div id="terminal" class="terminal">
+                </div>
+            </div>
+            <div class="container editorcontainer">
+                <div class="editorheader"></div>
+                <div id="editor" class="editor"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/typestart.js"></script>
+    <script src="src/init.js"></script>
+<script>
+    if (localStorage.getItem("code"))
+    {
+        //editor.setValue(localStorage.getItem("code"),-1);
+    }
+</script>
+</body>

@@ -1,0 +1,127 @@
+* {
+    margin:0;
+    padding:0;
+}
+body, html {
+    color: rgba(255,255,255,.9);
+    font-family: 'Lato', sans-serif;
+}
+body {
+    background: hsl(200,50%,30%);
+    /*background-size: cover;*/
+}
+.wrapper {
+    position:relative;
+    width:100%;
+    overflow:hidden;
+}
+.editorheader {
+    font-family: 'Lato', sans-serif;
+    position:fixed;
+    background:hsl(200,50%,20%);
+    top:0; left:0; right:0;
+    padding-top: 8px;
+    height:35px;
+    border-bottom: solid 4px rgba(0,0,0,.15);
+}
+
+.mainpanel {
+    position:fixed;
+    top:0px; bottom:0px;
+    right:0px;
+    left:0px;
+}
+.container {
+    position: absolute;
+    top:0px; bottom:0px;
+    right: 0px;
+    left:0px;
+    z-index: 0 ;
+}
+.editorcontainer {
+    display: none;
+}
+.screencontainer {
+    display: none;
+}
+
+.editor {
+    position:absolute;
+    top:55px; bottom:5px;
+    left:5px; right:5px;
+}
+.terminal {
+    position:absolute;
+    top:0px; bottom:0px;
+    left:0px; right:0px;
+}
+
+.helpcontainer {
+    position: absolute;
+    top:10px;
+    width: 30%;
+    right:10px;
+    bottom: 10px;
+    z-index: 1 ;
+}
+.helpbubble {
+    margin: 0 0 10px 0 ;
+    padding: 10px;
+    background-color: hsla(25,100%,85%,.8);
+    border-radius: 10px;
+    color: rgba(0,0,0,.7);
+    font-weight: 600;
+    font-size: .9em;
+}
+.helpbubble>h3 {
+    font-size: 1.1em;
+    margin: 0 0 5px 0;
+}
+.helpbubble>p {
+    color: rgba(0,0,0,.5);
+}
+a {
+    color: #EEE;
+    text-decoration: none;
+}
+.ace-monokai, .ui-widget-content { background:none !important }
+.ui-widget-content { color:#FFF; }
+
+.terminal-output > div {
+    color: #CCC;
+}
+
+.terminal {
+    background-color: rgba(0,0,0,.7);
+}
+.terminal .cmd {
+    background-color: rgba(0,0,0,.2);
+}
+
+.cmd .prompt, .terminal .terminal-output div div {
+    line-height: 20px;
+    font-size: 16px;
+}
+.terminal, .cmd {
+    line-height: 20px;
+    font-family: Inconsolata, monospace;
+}
+.terminal-output > div,.terminal, .cmd ,.terminal-output .command {
+    color: hsl(170,70%,70%);
+    font-size: 16px;
+}
+.cursor .blink {
+    background-color: hsl(170,50%,40%);
+    font-size: 16px;
+}
+.terminal .inverted, .cmd .inverted, .cmd .cursor.blink {
+    background-color: hsl(170,70%,70%);
+    color: #000;
+}
+.terminal a {
+    color: hsl(20,70%,70%);
+}
+
+.terminal a:hover {
+    color: hsl(20,100%,80%);
+}
