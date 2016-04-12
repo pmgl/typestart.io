@@ -58,7 +58,7 @@ typestart.commands.alias = new Command
     if s.length>0
       cmd = s.splice(0,1)[0]
       args = s.join(" ").trim()
-      typestart.drive.store(cmd,"new Alias(\""+args+"\")")
+      typestart.drive.store(cmd,"new Alias(\""+args.replace(/"/g,"\\\"")+"\")")
       typestart.commands[cmd] = new Alias(args)
       cmd+": alias "+args
 

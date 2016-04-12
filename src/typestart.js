@@ -8,7 +8,7 @@ TypeStart = (function() {
     this.commands = [];
     this.createIcon();
     this.context = {};
-    this.welcome_text = "typestart.io version 0.1\ntype 'help' for help\n";
+    this.welcome_text = "typestart.io version 0.1\nFork me here: https://github.com/pmgl/typestart.io\ntype 'help' for help\n";
     this.terminal = $("#terminal").terminal(((function(_this) {
       return function(c, term) {
         var res;

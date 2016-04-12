@@ -7,6 +7,7 @@ class TypeStart
     @context = {}
     @welcome_text = """
 typestart.io version 0.1
+Fork me here: https://github.com/pmgl/typestart.io
 type 'help' for help
 
 """
