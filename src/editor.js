@@ -10,10 +10,22 @@ this.Editor = (function() {
         return _this.editorContentsChanged();
       };
     })(this));
+    $("#editorcancelbutton").click((function(_this) {
+      return function() {
+        return _this.typestart.showTerminal();
+      };
+    })(this));
+    $("#editorsavebutton").click((function(_this) {
+      return function() {
+        _this.typestart.drive.store(_this.typestart.current_project, _this.editor.getValue());
+        return _this.typestart.showTerminal();
+      };
+    })(this));
   }
 
   Editor.prototype.edit = function(name) {
     var content;
+    $("#editorfilename").html("editing: " + name);
     content = this.typestart.drive.load(name);
     if (content != null) {
       this.editor.setValue(content, 1);
@@ -23,9 +35,7 @@ this.Editor = (function() {
     return this.typestart.showEditor();
   };
 
-  Editor.prototype.editorContentsChanged = function() {
-    return this.typestart.drive.store(this.typestart.current_project, this.editor.getValue());
-  };
+  Editor.prototype.editorContentsChanged = function() {};
 
   return Editor;
 

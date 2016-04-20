@@ -1,6 +1,7 @@
 class TypeStart
   constructor: ->
     @drive = new Drive(@)
+    @datastore = new DataStore(@)
     @editor = new Editor(@)
     @commands = []
     @createIcon()
@@ -35,6 +36,14 @@ type 'help' for help
       completion: (terminal,input,callback)=>
         callback @completion(input)
     )
+
+  init:()->
+    list = @drive.list()
+    for c in list
+      try
+        @load c
+      catch err
+        @error err
 
   createIcon:()->
     link = document.createElement("link")
@@ -77,6 +86,17 @@ type 'help' for help
   eval:(code)->
     return eval.call(@context,code)
 
+  splitArg:(args)->
+    s = args.trim().split(" ")
+    if s.length == 1 and s[0] == ""
+      return []
+    else if s.length <= 1
+      return s
+    else
+      a = s[0]
+      s.splice(0,1)
+      [a,s.join(" ")]
+
   exec:(line)->
     line = line.trim()
     return if line.length == 0
@@ -111,7 +131,10 @@ type 'help' for help
     code = @drive.load command
     if code?
       compiled = CoffeeScript.compile(code, { bare: true })
-      @commands[command] = @eval(compiled)
+      c = @eval(compiled)
+      if c instanceof Command
+        @commands[command] = c
+        if c.init? then c.init()
 
   echo:(arg=" ")->
     @terminal.echo(arg)
@@ -150,3 +173,4 @@ type 'help' for help
     res.join("\n")
 
 typestart = new TypeStart()
+typestart.init()

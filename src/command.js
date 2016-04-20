@@ -31,6 +31,9 @@ this.Command = (function() {
       if (data.f != null) {
         this.f = data.f;
       }
+      if (data.init != null) {
+        this.init = data.init;
+      }
       if (data.complete != null) {
         this.complete = data.complete;
       }

@@ -77,24 +77,23 @@ typestart.commands.remove = new Command
       typestart.error("Not found: "+arg)
       return
 
-typestart.commands.background = new Command
-  name: "background"
-  help: "sets the provided image URL as background image for typestart.io window"
+typestart.commands.install = new Command
+  name: "install"
+  help: "Installs a plug-in. Without arguments, lists the official available plug-ins."
   f: (arg)->
     if arg.length>0
-      document.body.style.background = "url(#{arg}) no-repeat center center / cover fixed"
-      localStorage.setItem("background.image",arg)
+      $.get "plugins/#{arg}.coffee", (result)->
+        typestart.drive.store(arg,result)
+        typestart.load(arg)
+        typestart.echo("Successfully installed plug-in: "+arg)
+      return "Installing plug-in: "+arg
     else
-      document.body.style.background = "hsl(200,50%,30%)"
-      localStorage.setItem("background.image",arg)
+      typestart.echo "background: allows to set a background picture to your typestart.io"
+      typestart.echo "todo: a command line todo list"
+    return
 
-
-typestart.commands.load = new Command
-typestart.commands.save = new Command
-
-bg = localStorage.getItem("background.image")
-if bg? and bg.length>0
-  document.body.style.background = "url(#{bg}) no-repeat center center / cover fixed"
+#typestart.commands.load = new Command
+#typestart.commands.save = new Command
 
 try
   for name in typestart.drive.list()

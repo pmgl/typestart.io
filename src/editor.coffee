@@ -6,8 +6,15 @@ class @Editor
     @editor.getSession().on('change',=>
       @editorContentsChanged()
     )
+    $("#editorcancelbutton").click ()=>
+      @typestart.showTerminal()
+
+    $("#editorsavebutton").click ()=>
+      @typestart.drive.store(@typestart.current_project,@editor.getValue())
+      @typestart.showTerminal()
 
   edit:(name)->
+    $("#editorfilename").html "editing: #{name}"
     content = @typestart.drive.load(name)
     if content?
       @editor.setValue content,1
@@ -16,5 +23,5 @@ class @Editor
     @typestart.showEditor()
 
   editorContentsChanged:()->
-    @typestart.drive.store(@typestart.current_project,@editor.getValue())
+    #@typestart.drive.store(@typestart.current_project,@editor.getValue())
 

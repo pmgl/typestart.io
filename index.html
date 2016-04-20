@@ -23,6 +23,7 @@
     <script src="src/command.js"></script>
     <script src="src/alias.js"></script>
     <script src="src/drive.js"></script>
+    <script src="src/datastore.js"></script>
     <script src="src/editor.js"></script>
 
     <link href='src/default.css' rel='stylesheet' type='text/css' />
@@ -39,7 +40,11 @@
                 </div>
             </div>
             <div class="container editorcontainer">
-                <div class="editorheader"></div>
+                <div class="editorbuttonpanel">
+                    <span id="editorfilename">Filename</span>
+                    <span class="button" id="editorcancelbutton">Cancel</span>
+                    <span class="button ok" id="editorsavebutton">Save</span>
+                </div>
                 <div id="editor" class="editor"></div>
             </div>
         </div>

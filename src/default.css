@@ -15,15 +15,34 @@ body {
     width:100%;
     overflow:hidden;
 }
-.editorheader {
-    font-family: 'Lato', sans-serif;
-    position:fixed;
-    background:hsl(200,50%,20%);
-    top:0; left:0; right:0;
-    padding-top: 8px;
-    height:35px;
-    border-bottom: solid 4px rgba(0,0,0,.15);
+.editorbuttonpanel {
+    position: fixed;
+    z-index: 2 ;
+    top: 10px ;
+    right: 10px ;
+    color: #EEE ;
+    background: rgba(128,128,128,.5);
+    border-radius: 10px;
+    padding: 20px;
 }
+
+#editorfilename {
+    margin-right: 30px;
+}
+
+.button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #888;
+    color: #EEE;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ok {
+    background-color: hsl(190,50%,40%);
+}
+
 
 .mainpanel {
     position:fixed;
@@ -45,10 +64,11 @@ body {
     display: none;
 }
 
-.editor {
+#editor {
     position:absolute;
-    top:55px; bottom:5px;
-    left:5px; right:5px;
+    top:0px; bottom:0px;
+    left:0px; right:0px;
+    background: rgba(0,0,0,.5);
 }
 .terminal {
     position:absolute;

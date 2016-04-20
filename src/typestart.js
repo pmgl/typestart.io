@@ -4,6 +4,7 @@ var TypeStart, typestart;
 TypeStart = (function() {
   function TypeStart() {
     this.drive = new Drive(this);
+    this.datastore = new DataStore(this);
     this.editor = new Editor(this);
     this.commands = [];
     this.createIcon();
@@ -43,6 +44,22 @@ TypeStart = (function() {
       })(this)
     });
   }
+
+  TypeStart.prototype.init = function() {
+    var c, err, list, _i, _len, _results;
+    list = this.drive.list();
+    _results = [];
+    for (_i = 0, _len = list.length; _i < _len; _i++) {
+      c = list[_i];
+      try {
+        _results.push(this.load(c));
+      } catch (_error) {
+        err = _error;
+        _results.push(this.error(err));
+      }
+    }
+    return _results;
+  };
 
   TypeStart.prototype.createIcon = function() {
     var canvas, context, link, size;
@@ -84,6 +101,20 @@ TypeStart = (function() {
 
   TypeStart.prototype["eval"] = function(code) {
     return eval.call(this.context, code);
+  };
+
+  TypeStart.prototype.splitArg = function(args) {
+    var a, s;
+    s = args.trim().split(" ");
+    if (s.length === 1 && s[0] === "") {
+      return [];
+    } else if (s.length <= 1) {
+      return s;
+    } else {
+      a = s[0];
+      s.splice(0, 1);
+      return [a, s.join(" ")];
+    }
   };
 
   TypeStart.prototype.exec = function(line) {
@@ -128,13 +159,19 @@ TypeStart = (function() {
   };
 
   TypeStart.prototype.load = function(command) {
-    var code, compiled;
+    var c, code, compiled;
     code = this.drive.load(command);
     if (code != null) {
       compiled = CoffeeScript.compile(code, {
         bare: true
       });
-      return this.commands[command] = this["eval"](compiled);
+      c = this["eval"](compiled);
+      if (c instanceof Command) {
+        this.commands[command] = c;
+        if (c.init != null) {
+          return c.init();
+        }
+      }
     }
   };
 
@@ -193,3 +230,5 @@ TypeStart = (function() {
 })();
 
 typestart = new TypeStart();
+
+typestart.init();

@@ -13,6 +13,8 @@ class @Command
     else
       @name = data.name if data.name?
       @f = data.f if data.f?
+      @init = data.init if data.init?
       @complete = data.complete if data.complete?
       @help = data.help if data.help?
       @example = data.example if data.example?
+
