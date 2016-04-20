@@ -135,6 +135,8 @@ type 'help' for help
       if c instanceof Command
         @commands[command] = c
         if c.init? then c.init()
+      else if c instanceof Alias
+        @commands[command] = c
 
   echo:(arg=" ")->
     @terminal.echo(arg)

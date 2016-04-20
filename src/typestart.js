@@ -171,6 +171,8 @@ TypeStart = (function() {
         if (c.init != null) {
           return c.init();
         }
+      } else if (c instanceof Alias) {
+        return this.commands[command] = c;
       }
     }
   };
