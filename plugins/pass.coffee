@@ -1,9 +1,8 @@
 new Command
-  name: "passware",
+  name: "pass",
 
   init: ()-> 
-    $.getScript "https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js", ()->
-      console.info("sha3 loaded")
+    $.getScript "https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"
         
   f: (arg)->
     s = typestart.splitArg(arg)
@@ -18,9 +17,9 @@ new Command
 
     switch s.length
         when 0
-          "Usage: passware <your_service>"
+          "Usage: pass <your_service>"
         when 1
-          cryptophrase = sessionStorage.getItem("passware_cryptophrase")
+          cryptophrase = sessionStorage.getItem("pass_cryptophrase")
 
           if not cryptophrase
             typestart.terminal.set_mask(true)
@@ -32,7 +31,7 @@ new Command
                 cryptophrase = CryptoJS.SHA3(cryptophrase).toString()
                 x++
 
-              sessionStorage.setItem("passware_cryptophrase", cryptophrase)
+              sessionStorage.setItem("pass_cryptophrase", cryptophrase)
               getPass(s[0])
           else
             getPass(s[0])
