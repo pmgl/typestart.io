@@ -90,6 +90,7 @@ typestart.commands.install = new Command
     else
       typestart.echo "background: allows to set a background picture to your typestart.io"
       typestart.echo "todo: a command line todo list"
+      typestart.echo "pass: Generate strong passwords from your main passphrase"
     return
 
 #typestart.commands.load = new Command
