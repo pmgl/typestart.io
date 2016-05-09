@@ -3,7 +3,7 @@ new Command({
   name: "todo",
   help: "A command-line todo list",
   f: function(arg) {
-    var err, i, list, num, s, task, _i, _j, _ref, _ref1;
+    var displayed, err, i, list, num, s, task, _i, _j, _ref, _ref1;
     s = typestart.splitArg(arg);
     try {
       list = typestart.datastore.get("todo", "list");
@@ -15,16 +15,18 @@ new Command({
     }
     switch (s.length) {
       case 0:
-        if (list.length === 0) {
-          return "Nothing to do!";
-        } else {
-          for (i = _i = 0, _ref = list.length - 1; _i <= _ref; i = _i += 1) {
-            if (list[i] != null) {
-              typestart.echo("" + (i + 1) + ". " + list[i]);
-            }
+        displayed = 0;
+        for (i = _i = 0, _ref = list.length - 1; _i <= _ref; i = _i += 1) {
+          if (list[i] != null) {
+            typestart.echo("" + (i + 1) + ". " + list[i]);
+            displayed++;
           }
         }
-        break;
+        if (displayed === 0) {
+          return "Nothing to do!";
+        } else {
+          return void 0;
+        }
       case 1:
       case 2:
         num = parseInt(s[0]);

@@ -13,13 +13,12 @@ new Command
 
     switch s.length
       when 0
-        if list.length == 0
-          "Nothing to do!"
-        else
-          for i in [0..list.length-1] by 1
-            if list[i]?
-              typestart.echo("#{i+1}. #{list[i]}")
-          return
+        displayed = 0
+        for i in [0..list.length-1] by 1
+          if list[i]?
+            typestart.echo("#{i+1}. #{list[i]}")
+            displayed++
+        return if displayed == 0 then "Nothing to do!" else undefined
 
       when 1,2
         num = parseInt(s[0])
